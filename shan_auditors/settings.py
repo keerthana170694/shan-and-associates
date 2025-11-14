@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+from environ import Env
+env = Env()
+Env.read_env()
+ENVIRONMENT = env('ENVIRONMENT', default='production')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4i)pevcp=f6-cjrrud3r01f^-@2$k7gdy-a$xi#06x#%+5&ld0'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -133,8 +140,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company email
-EMAIL_HOST_PASSWORD = 'eefgkyaetowmirgb'       # use app password, not real Gmail password
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-#EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+
 
