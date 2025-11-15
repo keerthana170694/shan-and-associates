@@ -40,7 +40,12 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "shan-auditors.onrender.com",
+    ".onrender.com",
+    "localhost",
+]
 
 
 # Application definition
