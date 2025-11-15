@@ -1,83 +1,151 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 
 <style>
-    .services-container {
-        padding: 40px 20px;
-        max-width: 1200px;
-        margin: auto;
-    }
+
+.services-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.services-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #0f172a;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: #0f172a;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* EXTRA SERVICE DETAILS SECTION */
+.extra-section {
+    margin-top: 50px;
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.extra-section h2 {
+    font-size: 26px;
+    color: #0f172a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.extra-section ul {
+    list-style: square;
+    padding-left: 30px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.8;
+}
+
+
+
+/* ======================================================
+   📱📱📱 MEDIA QUERIES FOR RESPONSIVE DESIGN
+   (ONLY Added — No changes to your original design)
+====================================================== */
+
+/* --- Mobile Screens (max-width: 600px) --- */
+@media (max-width: 600px) {
 
     .services-title {
-        text-align: center;
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 30px;
-        color: #0f172a;
+        font-size: 26px;
     }
 
     .service-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 25px;
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
     }
 
     .service-card {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: transform 0.3s ease;
-    }
-
-    .service-card:hover {
-        transform: translateY(-5px);
+        padding: 18px;
     }
 
     .service-card img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 15px;
+        width: 80px;
+        height: 80px;
     }
 
-    .service-card h3 {
-        color: #0f172a;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    .service-card p {
-        font-size: 14px;
-        color: #333;
-    }
-
-    /* EXTRA SERVICE DETAILS SECTION */
     .extra-section {
-        margin-top: 50px;
-        background: #f8f9fa;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
     }
 
     .extra-section h2 {
-        font-size: 26px;
-        color: #0f172a;
-        margin-bottom: 20px;
-        text-align: center;
+        font-size: 22px;
     }
 
     .extra-section ul {
-        list-style: square;
-        padding-left: 30px;
-        font-size: 15px;
-        color: #333;
-        line-height: 1.8;
+        font-size: 14px;
+        padding-left: 20px;
     }
+}
+
+/* --- Tablets (600px – 900px) --- */
+@media (min-width: 600px) and (max-width: 900px) {
+
+    .services-title {
+        font-size: 30px;
+    }
+
+    .service-card {
+        padding: 22px;
+    }
+
+    .extra-section {
+        padding: 25px;
+    }
+}
+
+/* --- Small Laptops (900px – 1100px) --- */
+@media (min-width: 900px) and (max-width: 1100px) {
+
+    .service-grid {
+        gap: 22px;
+    }
+}
+
 </style>
+
 
 <div class="services-container">
 
@@ -128,6 +196,7 @@
         </div>
 
     </div>
+
 
     <!-- EXTRA OLD POINTS SECTION -->
     <div class="extra-section">

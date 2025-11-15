@@ -1,85 +1,200 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 style="color: #0074D9;">Shan & Associates – Chartered Accountants</h2>
+<style>
 
-<p>
-    <strong>Shan & Associates</strong> is a professional firm of <strong>Chartered Accountants</strong> 
-    offering expert services in <em>accounting, auditing, taxation, GST, and business advisory</em>. 
-    We are dedicated to delivering practical, transparent, and value-driven financial solutions 
-    that empower our clients to make confident business decisions.
-</p>
+    /* ===========================
+       ABOUT PAGE MAIN STYLES
+    ============================ */
+    .about-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px 10px;
+        line-height: 1.8;
+        color: #1e293b;
+    }
 
-<hr>
+    .about-container h2 {
+        color: #0074D9;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
 
-<h3 style="color: #0f8b8b;">Our Mission</h3>
-<p>
-    Our mission is to provide <strong>accurate, timely, and ethical financial services</strong> 
-    that enable businesses to achieve growth and maintain compliance with all statutory requirements.  
-    We believe in building long-term relationships founded on trust, integrity, and excellence.
-</p>
+    .about-container h3 {
+        color: #0f8b8b;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
 
-<hr>
+    .about-container ul {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
 
-<h3 style="color: #0f8b8b;">Our Vision</h3>
-<p>
-    To be recognized as a <strong>leading CA firm in India</strong> known for quality service, 
-    professionalism, and personalized client care — ensuring that every business we serve 
-    thrives in an ever-evolving financial landscape.
-</p>
+    .about-container li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
 
-<hr>
+    .about-container p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
 
-<h3 style="color: #0f8b8b;">What We Do</h3>
-<ul>
-    <li>✔ Statutory, Internal & Tax Audits</li>
-    <li>✔ Income Tax Planning and Filing</li>
-    <li>✔ GST Registration, Returns & Audit</li>
-    <li>✔ Business Advisory & Financial Consulting</li>
-    <li>✔ Startup Formation and Compliance Support</li>
-    <li>✔ Accounting, Payroll & Outsourcing Services</li>
-</ul>
+    hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 25px 0;
+    }
 
-<hr>
 
-<h3 style="color: #0f8b8b;">Why Choose Shan & Associates?</h3>
-<ul>
-    <li>🎯 Experienced professionals with deep industry knowledge</li>
-    <li>🤝 Personalized attention and tailored financial strategies</li>
-    <li>💡 End-to-end solutions for all accounting and compliance needs</li>
-    <li>📈 Commitment to transparency, accuracy, and growth-oriented advice</li>
-    <li>⏱️ On-time reporting and clear communication</li>
-</ul>
 
-<hr>
+    /* ===========================================
+       📱 MOBILE DEVICES (up to 480px)
+    ============================================ */
+    @media (max-width: 480px) {
 
-<h3 style="color: #0f8b8b;">Our Core Values</h3>
-<ul>
-    <li><strong>Integrity:</strong> We uphold honesty and ethics in every engagement.</li>
-    <li><strong>Excellence:</strong> We strive for precision and quality in all our work.</li>
-    <li><strong>Confidentiality:</strong> We respect client privacy and data security.</li>
-    <li><strong>Commitment:</strong> We are dedicated to helping clients achieve success.</li>
-</ul>
+        .about-container {
+            padding: 10px;
+        }
 
-<hr>
+        .about-container h2 {
+            font-size: 22px;
+            text-align: center;
+        }
 
-<h3 style="color: #0f8b8b;">Our Clients</h3>
-<p>
-    Our clients include <strong>startups, SMEs, corporates, and non-profit organizations</strong> 
-    across diverse industries. We understand that every client’s needs are unique, 
-    and we tailor our approach to deliver the best possible outcomes.
-</p>
+        .about-container h3 {
+            font-size: 18px;
+        }
 
-<hr>
+        .about-container p,
+        .about-container li {
+            font-size: 14px;
+        }
 
-<h3 style="color: #0f8b8b;">Get in Touch</h3>
-<p>
-    Whether you’re an entrepreneur, a growing business, or an established company, 
-    <strong>Shan & Associates</strong> is your partner in financial clarity and compliance.  
-    Let’s work together to simplify your financial journey.
-</p>
+        ul {
+            padding-left: 15px;
+        }
+    }
 
-<p style="margin-top: 20px;">
-    📞 <strong>Contact:</strong> shanassociatestnj@gmail.com | +91 99406 66760 <br>
-    📍 <strong>Location:</strong> Chennai, Tamil Nadu
-</p>
+
+
+    /* ===========================================
+       📱📱 TABLETS (481px–768px)
+    ============================================ */
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        .about-container {
+            padding: 15px;
+        }
+
+        .about-container h2 {
+            font-size: 26px;
+        }
+
+        .about-container h3 {
+            font-size: 20px;
+        }
+    }
+
+
+
+    /* ===========================================
+       💻 DESKTOPS (769px and above)
+    ============================================ */
+    @media (min-width: 769px) {
+        .about-container h2 {
+            font-size: 32px;
+        }
+
+        .about-container h3 {
+            font-size: 24px;
+        }
+    }
+
+</style>
+
+<div class="about-container">
+
+    <h2>Shan & Associates – Chartered Accountants</h2>
+
+    <p>
+        <strong>Shan & Associates</strong> is a professional firm of 
+        <strong>Chartered Accountants</strong> offering expert services in 
+        <em>accounting, auditing, taxation, GST, and business advisory</em>. We are committed 
+        to delivering transparent, efficient, and value-driven financial solutions.
+    </p>
+
+    <hr>
+
+    <h3>Our Mission</h3>
+    <p>
+        To provide <strong>accurate, timely, and ethical financial services</strong> 
+        that support businesses in achieving compliance and growth.
+    </p>
+
+    <hr>
+
+    <h3>Our Vision</h3>
+    <p>
+        To be recognized as a <strong>leading CA firm in India</strong> known for 
+        quality, professionalism, and personalized service.
+    </p>
+
+    <hr>
+
+    <h3>What We Do</h3>
+    <ul>
+        <li>✔ Statutory, Internal & Tax Audits</li>
+        <li>✔ Income Tax Planning and Filing</li>
+        <li>✔ GST Registration, Returns & Audit</li>
+        <li>✔ Business Advisory & Financial Consulting</li>
+        <li>✔ Startup Formation and Compliance Support</li>
+        <li>✔ Accounting, Payroll & Outsourcing Services</li>
+    </ul>
+
+    <hr>
+
+    <h3>Why Choose Shan & Associates?</h3>
+    <ul>
+        <li>🎯 Experienced professionals with deep industry expertise</li>
+        <li>🤝 Personalized and strategic financial guidance</li>
+        <li>💡 End-to-end solutions for all compliance needs</li>
+        <li>📈 Transparent, accurate, and growth-focused service</li>
+        <li>⏱️ Timely reporting and communication</li>
+    </ul>
+
+    <hr>
+
+    <h3>Our Core Values</h3>
+    <ul>
+        <li><strong>Integrity:</strong> Honesty and ethics in every engagement.</li>
+        <li><strong>Excellence:</strong> Precision and quality in all deliverables.</li>
+        <li><strong>Confidentiality:</strong> Secure handling of financial data.</li>
+        <li><strong>Commitment:</strong> Ensuring client success at every step.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Our Clients</h3>
+    <p>
+        We serve <strong>startups, SMEs, corporates, and non-profit organizations</strong> 
+        across various industries, offering customized financial solutions.
+    </p>
+
+    <hr>
+
+    <h3>Get in Touch</h3>
+    <p>
+        Whether you're an entrepreneur, small business, or established company,  
+        <strong>Shan & Associates</strong> is here to support your financial journey.
+    </p>
+
+    <p style="margin-top: 20px;">
+        📞 <strong>Contact:</strong> shanassociatestnj@gmail.com | +91 99406 66760 <br>
+        📍 <strong>Location:</strong> Chennai, Tamil Nadu
+    </p>
+
+</div>
+
 {% endblock %}

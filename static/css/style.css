@@ -1,3 +1,6 @@
+/* -----------------------------------------------------------
+   BASIC STYLES
+----------------------------------------------------------- */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -26,13 +29,17 @@ nav a:hover {
     text-decoration: underline;
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+/* Logo */
+.logo-container img {
+    height: 32px;
+    width: auto;
+}
 
-
-/* ---------------- Footer Section ---------------- */
-
+/* -----------------------------------------------------------
+   FOOTER STYLES
+----------------------------------------------------------- */
 footer {
-  background-color: #f9fafc; /* soft background */
+  background-color: #f9fafc;
   color: #1d3557;
   padding: 40px 60px 0;
   font-family: Arial, sans-serif;
@@ -92,7 +99,7 @@ footer {
   transform: scale(1.1);
 }
 
-/* Bottom copyright bar — TRI-COLOR STRIP 🇮🇳 */
+/* Bottom copyright */
 .footer-bottom {
   text-align: center;
   background: linear-gradient(90deg, #ff9933 0%, white 50%, #138808 100%);
@@ -103,14 +110,114 @@ footer {
   border-top: 2px solid #1d3557;
 }
 
-/* Highlight designer name */
 .footer-bottom span {
   color: #d97706;
   font-weight: bold;
 }
 
 
-.logo-container img {
-  height: 32px;
-  width: auto;
+/* ===========================================================
+   📱📱📱 MEDIA QUERIES (Responsive)
+=========================================================== */
+
+/* ---------- Small Mobile (max-width: 480px) ---------- */
+@media (max-width: 480px) {
+
+    header {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    nav a {
+        margin: 5px;
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .logo-container img {
+        height: 24px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-column h2 {
+        font-size: 22px;
+    }
+
+    .footer-column h3 {
+        font-size: 16px;
+    }
+
+    .footer-column p {
+        font-size: 13px;
+    }
+
+    .social-icons img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+}
+
+
+/* ---------- Tablet (481px – 768px) ---------- */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    header {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    nav a {
+        font-size: 15px;
+        margin: 0 8px;
+    }
+
+    footer {
+        padding: 30px 40px;
+    }
+
+    .footer-top {
+        gap: 30px;
+    }
+
+    .footer-column h2 {
+        font-size: 26px;
+    }
+
+    .footer-column p {
+        font-size: 14px;
+    }
+}
+
+
+/* ---------- Small Desktop (769px – 1024px) ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    header {
+        font-size: 20px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    footer {
+        padding: 40px;
+    }
+
+    .footer-top {
+        gap: 30px;
+    }
 }
