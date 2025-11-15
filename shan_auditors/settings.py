@@ -42,7 +42,7 @@ else:
 
 #ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['shan_auditors.onrender.com']
+ALLOWED_HOSTS = ['shan-auditors.onrender.com']
 
 
 
