@@ -42,7 +42,12 @@ else:
 
 #ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['shan-auditors.onrender.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'shan-auditors.onrender.com',
+]
+
 
 
 
