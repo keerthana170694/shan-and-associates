@@ -14,6 +14,11 @@ def services(request):
     
     return render(request, 'main/services.html')
 
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from .forms import ContactForm
+
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -25,25 +30,39 @@ def contact_view(request):
 
             subject = f"New Contact Form Submission from {name}"
             message_body = f"""
-            Name: {name}
-            Email: {email}
-            Phone: {phone}
-            Message: 
-            {message}
-            """
+Name: {name}
+Email: {email}
+Phone: {phone}
+Message:
+{message}
+"""
 
-            # send email to your chosen admin/company mail
-            send_mail(
-                subject,
-                message_body,
-                settings.DEFAULT_FROM_EMAIL,
-                ['shanassociatestnj@gmail.com'],  # 📩 where you want to receive messages
-                fail_silently=False,
-            )
+            # ✅ Safe email sending
+            email_sent = True
+            try:
+                send_mail(
+                    subject,
+                    message_body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    ['shanassociatestnj@gmail.com'],  # where you receive messages
+                    fail_silently=False,
+                )
+            except Exception as e:
+                print(f"Email sending failed: {e}")  # logs the error
+                email_sent = False
 
-            return redirect('success')  # create a success page or message
+            # Render success page with message
+            if email_sent:
+                return render(request, 'main/success.html', {
+                    'message': 'Your message has been sent successfully ✅'
+                })
+            else:
+                return render(request, 'main/success.html', {
+                    'message': 'Your message was received, but email delivery failed. We will contact you soon.'
+                })
     else:
         form = ContactForm()
+
     return render(request, 'main/contact.html', {'form': form})
 
 def success_view(request):

@@ -2,7 +2,6 @@
 {% block content %}
 
 <style>
-/* Main container */
 .success-container {
     max-width: 700px;
     margin: 80px auto;
@@ -12,57 +11,31 @@
     text-align: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-
-/* Heading */
 .success-container h2 {
     font-size: 28px;
-    color: #16a34a;
+    color: #16a34a; /* Green success color */
     margin-bottom: 15px;
 }
-
-/* Paragraph */
 .success-container p {
     font-size: 18px;
     color: #333;
     line-height: 1.6;
 }
-
-/* Mobile screens */
+/* Responsive */
 @media (max-width: 600px) {
-    .success-container {
-        margin: 40px 15px;
-        padding: 25px;
-    }
-
-    .success-container h2 {
-        font-size: 22px;
-    }
-
-    .success-container p {
-        font-size: 15px;
-    }
+    .success-container { margin: 40px 15px; padding: 25px; }
+    .success-container h2 { font-size: 22px; }
+    .success-container p { font-size: 15px; }
 }
-
-/* Tablets */
 @media (max-width: 900px) and (min-width: 601px) {
-    .success-container {
-        margin: 60px 20px;
-        padding: 30px;
-    }
-
-    .success-container h2 {
-        font-size: 24px;
-    }
-
-    .success-container p {
-        font-size: 16px;
-    }
+    .success-container { margin: 60px 20px; padding: 30px; }
+    .success-container h2 { font-size: 24px; }
+    .success-container p { font-size: 16px; }
 }
 </style>
 
 <div class="success-container">
-    <h2>Your message has been Sent Successfully ✅</h2>
-    <p>Thank you for contacting Shan & Associates. We will get back to you shortly.</p>
+    <h2>{{ message }}</h2>
 </div>
 
 {% endblock %}
