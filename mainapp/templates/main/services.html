@@ -1,290 +1,149 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shan & Associates - Services</title>
 
-  <style>
-    :root {
-      --teal: #008f8f;
-      --dark-teal: #0f8b8b;
-      --nav-blue: #0f5fa8;
-      --bg: #f7fbfd;
-      --white: #ffffff;
-      --muted: #6b7a83;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: #05323a;
+{% block content %}
+
+<style>
+    .services-container {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: auto;
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      background: var(--white);
-      box-shadow: 0 2px 6px rgba(0,0,0,.06);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .logo img { height: 34px; }
-    .hamb {
-      background: transparent;
-      border: none;
-      font-size: 22px;
-      padding: 8px;
-      cursor: pointer;
+    .services-title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #0f172a;
     }
 
-    /* mobile menu */
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      display: none;
-      background: rgba(0,0,0,.35);
-      z-index: 60;
-    }
-    .menu {
-      position: fixed;
-      left: 0; top: 0; bottom: 0;
-      width: 92%;
-      max-width: 400px;
-      background: linear-gradient(180deg, var(--teal), var(--nav-blue));
-      color: white;
-      padding: 18px 18px 28px;
-      transform: translateX(-110%);
-      transition: transform .3s ease;
-      z-index: 70;
-      overflow-y: auto;
-    }
-    .menu.open { transform: translateX(0); }
-    .close-btn {
-      background: transparent;
-      border: 2px solid rgba(255,255,255,.18);
-      color: white;
-      padding: 8px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .nav-item a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      padding: 12px 8px;
-      border-radius: 6px;
-      transition: background .2s;
-    }
-    .nav-item a:hover { background: rgba(255,255,255,.1); }
-
-    /* hero */
-    .hero {
-      padding: 26px 18px;
-      text-align: center;
-    }
-    .hero h1 {
-      margin: 0;
-      color: var(--nav-blue);
-      font-size: 20px;
-      letter-spacing: 1px;
-    }
-    .hero p {
-      color: var(--muted);
-      margin: 8px 0 0;
-      font-size: 14px;
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
     }
 
-    /* services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      padding: 12px 12px 60px;
-    }
     .service-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 6px 18px rgba(10,30,40,.06);
-      transition: all .2s ease;
-      cursor: pointer;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
     }
+
     .service-card:hover {
-      box-shadow: 0 6px 20px rgba(10,30,40,.12);
-      transform: translateY(-2px);
+        transform: translateY(-5px);
     }
+
+    .service-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
     .service-card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      font-weight: 700;
+        color: #0f172a;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
+
     .service-card p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
+        font-size: 14px;
+        color: #333;
     }
 
-    .details {
-      display: none;
-      background: var(--white);
-      border-radius: 10px;
-      margin: -4px 12px 10px;
-      padding: 14px 18px;
-      box-shadow: 0 4px 10px rgba(10,30,40,.06);
-      animation: fadeIn .3s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* EXTRA SERVICE DETAILS SECTION */
+    .extra-section {
+        margin-top: 50px;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    /* color accents */
-    .green { border-left: 5px solid #2ecc71; }
-    .orange { border-left: 5px solid #f39c12; }
-    .pink { border-left: 5px solid #e84393; }
-    .purple { border-left: 5px solid #8e44ad; }
-    .cyan { border-left: 5px solid #00cec9; }
-    .blue { border-left: 5px solid #2980b9; }
-    .amber { border-left: 5px solid #e67e22; }
-
-    @media (min-width: 720px) {
-      .menu { width: 360px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .extra-section h2 {
+        font-size: 26px;
+        color: #0f172a;
+        margin-bottom: 20px;
+        text-align: center;
     }
-  </style>
-</head>
-<body>
 
-  <header>
-    <div class="logo">
-      <img src="{% static 'images/logo.png' %}" alt="Shan & Associates Logo">
+    .extra-section ul {
+        list-style: square;
+        padding-left: 30px;
+        font-size: 15px;
+        color: #333;
+        line-height: 1.8;
+    }
+</style>
+
+<div class="services-container">
+
+    <h2 class="services-title">Our Professional Services</h2>
+
+    <div class="service-grid">
+
+        <!-- AUDIT -->
+        <div class="service-card">
+            <img src="{% static 'images/audit_service.png' %}" alt="Audit Services">
+            <h3>Audit & Assurance</h3>
+            <p>Comprehensive audit services ensuring accuracy, compliance, and credibility of your financial statements.</p>
+        </div>
+
+        <!-- TAX -->
+        <div class="service-card">
+            <img src="{% static 'images/tax_services.png' %}" alt="Tax Services">
+            <h3>Income Tax Services</h3>
+            <p>Tax filing, tax planning, and compliance for individuals, firms, and companies.</p>
+        </div>
+
+        <!-- GST -->
+        <div class="service-card">
+            <img src="{% static 'images/gst.png' %}" alt="GST Services">
+            <h3>GST Registration & Filing</h3>
+            <p>GST registration, monthly/annual return filing, audits, and consultation.</p>
+        </div>
+
+        <!-- COMPANY REGISTRATION -->
+        <div class="service-card">
+            <img src="{% static 'images/company_register.png' %}" alt="Company Registration">
+            <h3>Company Registration</h3>
+            <p>Private Limited, LLP, Partnership, and Proprietorship registrations with complete documentation.</p>
+        </div>
+
+        <!-- FINANCIAL -->
+        <div class="service-card">
+            <img src="{% static 'images/financial.png' %}" alt="Financial Advisory">
+            <h3>Financial Consultancy</h3>
+            <p>Professional financial planning, investment advisory, and business strategy development.</p>
+        </div>
+
+        <!-- BOOK KEEPING -->
+        <div class="service-card">
+            <img src="{% static 'images/book_keeping.png' %}" alt="Book Keeping">
+            <h3>Book Keeping</h3>
+            <p>Accurate bookkeeping, ledger maintenance, account reconciliation, and payroll services.</p>
+        </div>
+
     </div>
-    <button id="openMenu" class="hamb" aria-label="Open menu">☰</button>
-  </header>
 
-  <!-- overlay + sliding menu -->
-  <div id="overlay" class="menu-overlay"></div>
+    <!-- EXTRA OLD POINTS SECTION -->
+    <div class="extra-section">
+        <h2>Additional Services We Offer</h2>
 
-  <nav id="mobileMenu" class="menu">
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <img src="{% static 'images/logo.png' %}" alt="Logo" style="height:28px;filter:brightness(200%)">
-      <button id="closeMenu" class="close-btn">✕</button>
+        <ul>
+            <li>Business registration, MSME registration, PAN & TAN application</li>
+            <li>ROC annual filing and company compliance support</li>
+            <li>Preparation of financial statements and profit-loss accounts</li>
+            <li>Internal audit and management audit for organizations</li>
+            <li>Assistance in loan documentation and financial planning</li>
+            <li>Payroll services, PF/ESI registration & monthly filing</li>
+            <li>TDS filing, refund assistance and compliance services</li>
+        </ul>
     </div>
 
-    <ul class="nav-list">
-      <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-      <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
-      <li class="nav-item"><a href="{% url 'services' %}">Services</a></li>
-      <li class="nav-item"><a href="{% url 'contact' %}">Contact Us</a></li>
-    </ul>
-  </nav>
+</div>
 
-  <main>
-    <section class="hero">
-      <h1>Comprehensive Service Portfolio</h1>
-      <p>All business services under one roof — audit, tax, compliance, and advisory.</p>
-    </section>
-
-    <section class="services-grid">
-      <article id="internal" class="service-card green">
-        <h3>Internal Audit</h3>
-        <p>We provide futuristic internal audit services to help management take timely decisions.</p>
-      </article>
-      <div class="details" id="internalDetails">
-        <p>Our internal audit approach ensures robust internal controls, efficiency in processes, and reliable financial reporting.</p>
-      </div>
-
-      <article id="statutory" class="service-card orange">
-        <h3>Statutory Compliance</h3>
-        <p>We keep your team updated with the latest legal rules and regulations for full statutory compliance.</p>
-      </article>
-      <div class="details" id="statutoryDetails">
-        <p>We ensure your business stays compliant with all acts, minimizing risk and avoiding penalties.</p>
-      </div>
-
-      <article id="bookkeeping" class="service-card pink">
-        <h3>Book Keeping</h3>
-        <p>We assist in bookkeeping and financial record maintenance with accuracy and efficiency.</p>
-      </article>
-      <div class="details" id="bookkeepingDetails">
-        <p>Our bookkeeping services help maintain error-free ledgers, reconciliation, and monthly reporting.</p>
-      </div>
-
-      <article id="financial" class="service-card purple">
-        <h3>Financial Services</h3>
-        <p>We understand your funding needs and assist in managing financing and investments efficiently.</p>
-      </article>
-      <div class="details" id="financialDetails">
-        <p>Our services cover funding strategies, budgeting, and capital structuring for sustainable growth.</p>
-      </div>
-
-      <article id="tax" class="service-card cyan">
-        <h3>Direct & Indirect Tax</h3>
-        <p>We provide comprehensive support for income tax and GST compliance, filing, and audits.</p>
-      </article>
-      <div class="details" id="taxDetails">
-        <p>Our team ensures timely tax filing, audit readiness, and expert guidance for strategic tax planning.</p>
-      </div>
-
-      <article id="startup" class="service-card blue">
-        <h3>Business Startup / Support</h3>
-        <p>We provide assistance for company formation, registration, and ongoing compliance.</p>
-      </article>
-      <div class="details" id="startupDetails">
-        <p>From incorporation to financial structuring, we ensure smooth business setup and support.</p>
-      </div>
-
-      <article id="hr" class="service-card amber">
-        <h3>HR Activities</h3>
-        <p>We handle payroll, recruitment, employee training, and tax planning advisory for your workforce.</p>
-      </article>
-      <div class="details" id="hrDetails">
-        <p>Our HR services simplify employee management and ensure legal and financial compliance in HR operations.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    // mobile menu toggle
-    const menu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('overlay');
-    document.getElementById('openMenu').onclick = () => {
-      menu.classList.add('open');
-      overlay.style.display = 'block';
-    };
-    document.getElementById('closeMenu').onclick = closeMenu;
-    overlay.onclick = closeMenu;
-    function closeMenu() {
-      menu.classList.remove('open');
-      overlay.style.display = 'none';
-    }
-
-    // service details toggle
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const id = card.id + 'Details';
-        const detail = document.getElementById(id);
-        const isOpen = detail.style.display === 'block';
-        document.querySelectorAll('.details').forEach(d => d.style.display = 'none');
-        if (!isOpen) {
-          detail.style.display = 'block';
-          window.scrollTo({ top: card.offsetTop - 10, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+{% endblock %}
