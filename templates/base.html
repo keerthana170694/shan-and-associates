@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shan & Associates | Auditor Firm</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Correct CSS path -->
+    <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
 
     <style>
         /* ===== HEADER STYLES ===== */
@@ -18,7 +20,6 @@
             padding: 8px 40px;
         }
 
-        /* Logo + text */
         .logo-container {
             display: flex;
             align-items: center;
@@ -26,19 +27,18 @@
         }
 
         .logo-container img {
-            height: 40px; /* smaller, balanced logo */
+            height: 40px;
             width: auto;
         }
 
         .logo-text {
-            font-size: 18px; /* reduced font size */
+            font-size: 18px;
             font-weight: bold;
             color: #0f172a;
             letter-spacing: 4px;
             white-space: nowrap;
         }
 
-        /* Navigation */
         nav {
             display: flex;
             align-items: center;
@@ -58,7 +58,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== MAIN CONTENT ===== */
         main {
             padding: 40px;
         }
@@ -85,7 +84,8 @@
             margin: 15px;
         }
 
-        .footer-column h2, .footer-column h3 {
+        .footer-column h2,
+        .footer-column h3 {
             color: #0f172a;
         }
 
@@ -110,7 +110,6 @@
             font-weight: 600;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -134,6 +133,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>
@@ -141,7 +141,8 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="logo-container">
-            <img src="{% static 'images/ca_logo.png' %}" alt="CA Logo">
+            <!-- Correct logo path -->
+            <img src="{% static 'mainapp/images/ca_logo.png' %}" alt="CA Logo">
             <div class="logo-text">S H A N &nbsp; AND &nbsp; ASSOCIATES</div>
         </div>
 
@@ -160,47 +161,46 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-   <footer class="footer">
-    <div class="footer-top">
-        <div class="footer-column">
-            <h2>S H A N<br>&<br>ASSOCIATES</h2>
-            <p>
-                Our mission is to remain a pre-eminent chartered accounting firm by providing
-                value-added professional services on a cost-effective basis by adhering to an
-                uncompromising commitment to professionalism, integrity, creativity,
-                competence, and quality of service.
-            </p>
-        </div>
+    <footer class="footer">
+        <div class="footer-top">
 
-        <div class="footer-column">
-            <h3>CONTACT US</h3>
-            <p>
-                Plot No-C 10 F, Ground Floor,<br>
-                IIT COLONY 4th Street,<br>
-                Narayanapuram, Pallikaranai,<br>
-                Chennai-600100.
-            </p>
-            <p>
-                <strong>Phone:</strong> +91-9940666760, +91-9943834302<br>
-                <strong>Email:</strong> shanassociatestnj@gmail.com
-            </p>
+            <div class="footer-column">
+                <h2>S H A N<br>&<br>ASSOCIATES</h2>
+                <p>
+                    Our mission is to remain a pre-eminent chartered accounting firm by
+                    providing value-added professional services on a cost-effective basis
+                    with professionalism and integrity.
+                </p>
+            </div>
 
-            <!-- SOCIAL ICONS WITH WORKING LINKS -->
-            
-            <div class="social-icons">
-                <a href="https://wa.me/919940666760" target="_blank">
-                    <img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp">
-                </a>
+            <div class="footer-column">
+                <h3>CONTACT US</h3>
+                <p>
+                    Plot No-C 10 F, Ground Floor,<br>
+                    IIT COLONY 4th Street,<br>
+                    Narayanapuram, Pallikaranai,<br>
+                    Chennai-600100.
+                </p>
+                <p>
+                    <strong>Phone:</strong> +91-9940666760, +91-9943834302<br>
+                    <strong>Email:</strong> shanassociatestnj@gmail.com
+                </p>
+
+                <div class="social-icons">
+                    <a href="https://wa.me/919940666760" target="_blank">
+                        <!-- Correct WhatsApp icon path -->
+                        <img src="{% static 'mainapp/images/whatsapp.png' %}" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
 
         </div>
-    </div>
 
-    <div class="footer-bottom">
-        <p>© Copyright <strong>S H A N & Associates</strong>. Trusted and Registered Auditors Since 2013. All Rights Reserved.</p>
-        <p>Designed and Developed by <span>Keerthana M</span> | Built with Django and Python</p>
-    </div>
-</footer>
+        <div class="footer-bottom">
+            <p>© Copyright <strong>S H A N & Associates</strong>. Trusted and Registered Auditors Since 2013.</p>
+            <p>Designed and Developed by <span>Keerthana M</span> | Built with Django</p>
+        </div>
+    </footer>
 
 </body>
 </html>
