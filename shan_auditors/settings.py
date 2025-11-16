@@ -41,10 +41,10 @@ else:
     DEBUG = False
 
 #ALLOWED_HOSTS = ['*']
+
 ALLOWED_HOSTS = [
-    "shan-auditors.onrender.com",
-    ".onrender.com",
-    "localhost",
+    'shan-and-associates-auditfirm.onrender.com',
+    'localhost',
 ]
 
 
