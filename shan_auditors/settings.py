@@ -45,6 +45,7 @@ else:
 ALLOWED_HOSTS = [
     'shan-and-associates-auditfirm.onrender.com',
     'localhost',
+    '127.0.0.1',
 ]
 
 
@@ -162,5 +163,6 @@ EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company ema
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 
