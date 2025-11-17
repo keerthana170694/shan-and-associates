@@ -160,9 +160,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company email
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+#EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 
