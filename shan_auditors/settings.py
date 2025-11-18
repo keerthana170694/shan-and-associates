@@ -102,7 +102,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
+POSTGRES_LOCALLY = False
+if  ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
+    DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -155,13 +157,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 # Email settings (example using Gmail)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company email
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company email
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')      # use app password, not real Gmail password
+    DEFAULT_FROM_EMAIL = 'shan'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
 
 #EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
