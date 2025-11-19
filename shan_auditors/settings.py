@@ -163,7 +163,7 @@ if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = 'shanassociatestnj@gmail.com'  # replace with your company email
-    EMAIL_HOST_PASSWORD = 'eefgkyaetowmirgb'     # use app password, not real Gmail password
+    EMAIL_HOST_PASSWORD = 'eefg kyae towm irgb'     # use app password, not real Gmail password
     DEFAULT_FROM_EMAIL = 'shan'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
