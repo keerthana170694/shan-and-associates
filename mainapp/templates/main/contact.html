@@ -78,24 +78,18 @@
         background-color: #0c6f6f;
     }
 
-
-    /* ===========================================
-       📱 MOBILE (Up to 480px)
-    ============================================ */
+    /* MOBILE */
     @media (max-width: 480px) {
         .contact-container {
             padding: 15px;
         }
-
         .contact-container h2 {
             font-size: 22px;
         }
-
         input, textarea, select {
             font-size: 13px;
             padding: 8px;
         }
-
         button {
             width: 100%;
             font-size: 14px;
@@ -103,24 +97,17 @@
         }
     }
 
-
-    /* ===========================================
-       📱📱 TABLETS (481px–768px)
-    ============================================ */
+    /* TABLET */
     @media (min-width: 481px) and (max-width: 768px) {
         .contact-container {
             padding: 20px;
         }
-
         .contact-container h2 {
             font-size: 26px;
         }
     }
 
-
-    /* ===========================================
-       💻 DESKTOP (Above 768px)
-    ============================================ */
+    /* DESKTOP */
     @media (min-width: 769px) {
         .contact-container h2 {
             font-size: 28px;
@@ -136,7 +123,30 @@
 
     <form method="POST" action="">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <!-- NAME -->
+        <p>
+            <label for="id_name">Name</label>
+            {{ form.name }}
+        </p>
+
+        <!-- EMAIL -->
+        <p>
+            <label for="id_email">Email</label>
+            {{ form.email }}
+        </p>
+
+        <!-- PHONE -->
+        <p>
+            <label for="id_phone">Phone Number</label>
+            {{ form.phone }}
+        </p>
+
+        <!-- MESSAGE -->
+        <p>
+            <label for="id_message">Message</label>
+            {{ form.message }}
+        </p>
 
         <button type="submit">Send Message</button>
     </form>

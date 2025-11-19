@@ -7,11 +7,13 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name', 'email', 'message']
 # forms.py
-from django import forms
+
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, label='Your Name')
     email = forms.EmailField(label='Your Email')
+    
+
     phone = forms.CharField(
         max_length=15,
         validators=[
@@ -19,11 +21,16 @@ class ContactForm(forms.Form):
                 regex=r'^[0-9]+$',
                 message='Phone number must contain digits only.'
             )
-            ],
-            widget=forms.TextInput(attrs={
-                'placeholder': 'Enter phone number',
+        ],
+        widget=forms.TextInput(
+            attrs={
                 'pattern': '[0-9]+',
-                'title': 'Only numbers allowed'
-            })
+                'inputmode': 'numeric',
+                'maxlength': '15',
+                'placeholder': 'Enter your phone number',
+                'title': 'Only digits allowed'
+            }
+        )
     )
-    message = forms.CharField(widget=forms.Textarea, label='Message')
+
+    message = forms.CharField(widget=forms.Textarea)
